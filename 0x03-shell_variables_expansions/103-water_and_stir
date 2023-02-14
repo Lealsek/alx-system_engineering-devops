@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "ibase=water;obase=bestchol;$WATER+$STIR" | bc | tr '0123456789ABCDEF' 'behlnortacdef'
+echo $WATER $STIR | tr 'water' '01234' | tr 'stir.' '01234' | awk '{print strtonum("0x"$1)+strtonum("0x"$2)}' | tr '0123456789ABCDEF' 'behlnortacdef'
